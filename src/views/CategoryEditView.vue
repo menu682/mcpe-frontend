@@ -192,7 +192,7 @@ export default {
 
         getCategoryById() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category/" + this.category_id + "?token=" + token
+            const url = "http://minecraftpoketedition.top:8888/api_v1/category/" + this.category_id + token
 
             axios.get(url).then(res => {
 
@@ -245,7 +245,7 @@ export default {
 
         getAllCategories() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category?token=" + token
+            const url = "http://minecraftpoketedition.top:8888/api_v1/category" + token
 
             axios.get(url).then(res => {
 
