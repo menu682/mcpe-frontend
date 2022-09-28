@@ -9,13 +9,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link to="mod" class="nav-link">Mod</router-link>
+                        <router-link to="/mod" aria-current="page" class="nav-link">Mod</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/category" class="nav-link">Category</router-link>
+                        <router-link to="/category" aria-current="page" class="nav-link">Category</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="version" class="nav-link">Version</router-link>
+                        <router-link to="/version" aria-current="page" class="nav-link">Version</router-link>
                     </li>
                 </ul>
             </div>
@@ -60,11 +60,8 @@ export default {
 
 <style scoped>
 nav{
-    box-shadow: 0px 5px 5px rgba(0, 255, 0, 0.75);;
+    box-shadow: 0px 0px 5px 3px #141414;
 }
 
-nav:hover{
-    box-shadow: 0px 8px 5px rgba(0, 255, 0);;
-}
 
 </style>

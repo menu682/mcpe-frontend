@@ -1,6 +1,5 @@
 <template>
     <div>
-        <notifications position="bottom right" width="400px" classes="notif"/>
         <router-view class="height bg-dark text-light"/>
     </div>
 </template>
@@ -10,32 +9,14 @@
     min-height: 100vh;
 }
 
-.notif{
-// styling
-    margin: 0 20px 20px;
-    padding: 10px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: black;
+@import '~sweetalert2/src/variables';
 
-// default (blue)
-background: #44a4fc;
-    border-left: 5px solid #187fe7;
+$swal2-background: #212529;
+$swal2-color: rgba(0, 200, 0, 0.75);
+$swal2-border: solid 1px rgba(0, 200, 0, 0.75);
+$swal2-box-shadow: rgba(0, 200, 0, 0.75);
 
-// types (green, amber, red)
-&.success {
-     background: #68cd86;
-     border-left-color: #42a85f;
- }
 
-&.warn {
-     background: #ffb648;
-     border-left-color: #f48a06;
- }
+@import '~sweetalert2/src/sweetalert2';
 
-&.error {
-     background: #e54d42;
-     border-left-color: #b82e24;
- }
-}
 </style>

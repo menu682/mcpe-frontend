@@ -76,13 +76,7 @@ export default {
 .card {
     width: 300px;
     height: 200px;
-    box-shadow: 0px 0px 5px 5px rgba(0, 255, 0, 0.75);
-}
-
-.card:hover {
-    width: 310px;
-    height: 205px;
-    box-shadow: 0px 0px 10px 5px rgba(0, 255, 0);
+    box-shadow: 0px 0px 5px 3px #141414;
 }
 
 p {

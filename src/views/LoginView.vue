@@ -20,6 +20,9 @@
 
 import axios from "axios"
 
+import { useToast } from "vue-toastification";
+const toast = useToast()
+
 export default {
     name: "LoginView",
     data() {
@@ -37,7 +40,7 @@ export default {
                 "password": this.password
             }
 
-            const url = "http://localhost:8888/api_v1/auth/login"
+            const url = "http://minecraftpoketedition.top:8888/api_v1/auth/login"
 
             axios.post(url, reqData).then((res) => {
 
@@ -50,11 +53,8 @@ export default {
                     localStorage.userRoles = res.data.roles
                     localStorage.isAuth = true
 
-                    this.$notify({
-                        type: "success",
-                        title: "Авторизация",
-                        text: "Успешно!",
-                    });
+                    toast.success("Login Ok! Please wait...",{})
+
 
                     setTimeout(this.goToAdminPanel, 3000)
                 }
@@ -63,11 +63,8 @@ export default {
 
                     localStorage.clear()
 
-                    this.$notify({
-                        type: "error",
-                        title: "Авторизация",
-                        text: "Неверный логин или пароль"
-                    });
+                    toast.error("Login failed!",{})
+
                 }
             })
         },
@@ -80,5 +77,6 @@ export default {
 </script>
 
 <style scoped>
+
 
 </style>
