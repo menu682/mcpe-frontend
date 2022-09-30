@@ -72,7 +72,7 @@ export default {
             category_photo: null,
             category_parent: 0,
             token: "?token=chtotebezsesnugno",
-            photoUrl: "http://minecraftpoketedition.top:8888/api_v1/photo/category/getphoto/" + this.$route.params.id + "/",
+            photoUrl: "https://minecraftpoketedition.top:8443/api_v1/photo/category/getphoto/" + this.$route.params.id + "/",
 
             allCategories: []
         }
@@ -99,7 +99,7 @@ export default {
                 }).then((result) => {
                 if (result.isConfirmed) {
 
-                    const url = "http://minecraftpoketedition.top:8888/api_v1/category"
+                    const url = "https://minecraftpoketedition.top:8443/api_v1/category"
                     const token = localStorage.token
                     const data = {
                         "id": this.category_id,
@@ -126,7 +126,7 @@ export default {
         uploadPhoto() {
 
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/photo/category/upload"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/photo/category/upload"
             const photo = document.querySelector("#photo")
             const formData = new FormData()
             const json = JSON.stringify({
@@ -167,7 +167,7 @@ export default {
         deletePhoto() {
 
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/photo/category/removephoto/" + this.category_id + "/" + this.category_photo
+            const url = "https://minecraftpoketedition.top:8443/api_v1/photo/category/removephoto/" + this.category_id + "/" + this.category_photo
 
             axios.delete(url, {
                 headers: {
@@ -192,14 +192,14 @@ export default {
 
         getCategoryById() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category/" + this.category_id + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/category/" + this.category_id + token
 
             axios.get(url).then(res => {
 
                 this.category_name = res.data.category_name
                 this.category_parent = res.data.parent
                 if (res.data.category_photos.length > 0) {
-                    this.category_photo = res.data.category_photos[0].link
+                    this.category_photo = res.data.category_photos[0].photo_link
                 } else {
                     this.category_photo = null
                 }
@@ -215,7 +215,7 @@ export default {
 
         patchCategory() {
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/category"
             const data = {
                 "id": this.category_id,
                 "name": this.category_name,
@@ -245,7 +245,7 @@ export default {
 
         getAllCategories() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/category" + token
 
             axios.get(url).then(res => {
 

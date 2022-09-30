@@ -60,7 +60,7 @@ export default {
                 }).then((result) => {
                 if (result.isConfirmed) {
 
-                    const url = "http://minecraftpoketedition.top:8888/api_v1/version"
+                    const url = "https://minecraftpoketedition.top:8443/api_v1/version"
                     const token = localStorage.token
                     const data = {
                         "id": this.version_id,
@@ -85,7 +85,7 @@ export default {
 
         patchVersion() {
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/version"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/version"
             const data = {
                 "id": this.version_id,
                 "name": this.version_name
@@ -114,7 +114,7 @@ export default {
 
         getVersionById() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/version/" + this.version_id + "?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/version/" + this.version_id + "?token=" + token
 
             axios.get(url).then(res => {
 

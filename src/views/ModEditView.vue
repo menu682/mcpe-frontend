@@ -40,10 +40,10 @@
             <div
                 class="my_color m-3 d-flex flex-row flex-wrap align-items-center mt-4 mb-4 p-4 text-center">
                 <div v-if="mod_photos.length > 0" class="d-flex flex-row flex-wrap">
-                    <div v-for="photo in mod_photos" :key="photo.id" class="my_color m-2 p-2">
-                        <img :src="`${photoUrl + mod_id + '/'+ photo.link + '?token=' + token}`">
+                    <div v-for="photo in mod_photos" :key="photo.photo_id" class="my_color m-2 p-2">
+                        <img :src="`${photoUrl + mod_id + '/'+ photo.photo_link + '?token=' + token}`">
                         <button type="button" class="btn btn-outline-danger w-50 mt-3"
-                                @click="deletePhoto(photo.name)">Delete photo
+                                @click="deletePhoto(photo.photo_name)">Delete photo
                         </button>
                     </div>
                 </div>
@@ -64,14 +64,14 @@
                 class="my_color m-3 d-flex flex-row flex-wrap align-items-center m-2 p-4 text-center">
                 <div v-if="mod_files.length > 0" class="d-flex flex-row h-100 flex-wrap">
                     <div v-for="file in mod_files" :key="file.id" class="my_color m-2 p-2">
-                        <h5>{{ file.name }}</h5>
-                        <h5>{{ file.version.name }}</h5>
+                        <h5>{{ file.file_name }}</h5>
+                        <h5>{{ file.file_version.version_name }}</h5>
 
                         <button type="button" class="btn btn-outline-info w-50 m-3"
-                                @click="downloadFile(file.name, file.version.name)">Download file
+                                @click="downloadFile(file.file_name, file.file_version.version_name)">Download file
                         </button>
                         <button type="button" class="btn btn-outline-danger w-50 m-3"
-                                @click="deleteFile(file.name, file.link, file.version.id)">Delete file
+                                @click="deleteFile(file.file_name, file.file_link, file.file_version.version_id)">Delete file
                         </button>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ export default {
             mod_files: [],
             category_id: 0,
             allCategories: [],
-            photoUrl: "http://minecraftpoketedition.top:8888/api_v1/photo/mod/getphoto/",
+            photoUrl: "https://minecraftpoketedition.top:8443/api_v1/photo/mod/getphoto/",
             allVersions: [],
             version_id: 0
         }
@@ -139,7 +139,7 @@ export default {
 
         getAllVersions() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/version?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/version?token=" + token
 
             axios.get(url).then(res => {
 
@@ -155,7 +155,7 @@ export default {
 
         getAllCategories() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/category?token=" + token
 
             axios.get(url).then(res => {
 
@@ -173,13 +173,13 @@ export default {
         getModById() {
 
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/mod/" + this.mod_id + "?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/mod/" + this.mod_id + "?token=" + token
 
             axios.get(url).then(res => {
 
                 this.mod_name = res.data.mod_name
                 this.mod_description = res.data.mod_description
-                this.category_id = res.data.mod_category.id
+                this.category_id = res.data.mod_category.category_id
 
                 if (res.data.mod_photos.length > 0) {
                     this.mod_photos = res.data.mod_photos
@@ -205,7 +205,7 @@ export default {
         patchMod() {
 
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/mod"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/mod"
             const data = {
                 "id": this.mod_id,
                 "mod_name": this.mod_name,
@@ -239,7 +239,7 @@ export default {
         uploadPhoto() {
 
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/photo/mod/upload"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/photo/mod/upload"
             const photo = document.querySelector("#photo")
             const formData = new FormData()
             const json = JSON.stringify({
@@ -282,7 +282,7 @@ export default {
         deletePhoto(name) {
 
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/photo/mod/removephoto/" + this.mod_id + "/" + name
+            const url = "https://minecraftpoketedition.top:8443/api_v1/photo/mod/removephoto/" + this.mod_id + "/" + name
 
             axios.delete(url, {
                 headers: {
@@ -322,7 +322,7 @@ export default {
                 }).then((result) => {
                 if (result.isConfirmed) {
 
-                    const url = "http://minecraftpoketedition.top:8888/api_v1/mod"
+                    const url = "https://minecraftpoketedition.top:8443/api_v1/mod"
                     const token = localStorage.token
                     const data = {
                         "id": this.mod_id,
@@ -351,7 +351,7 @@ export default {
         downloadFile(file_name, version_name) {
 
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/file/download/"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/file/download/"
                 + this.mod_id + "/"
                 + version_name + "/"
                 + file_name
@@ -395,7 +395,7 @@ export default {
                 }).then((result) => {
                 if (result.isConfirmed) {
 
-                    const url = "http://minecraftpoketedition.top:8888/api_v1/file/remove/" + this.mod_id
+                    const url = "https://minecraftpoketedition.top:8443/api_v1/file/remove/" + this.mod_id
                     const token = localStorage.token
                     const data = {
                         "file_name": file_name,
@@ -423,7 +423,7 @@ export default {
         uploadFile(){
 
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/file/upload"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/file/upload"
             const file = document.querySelector("#add_file")
             const v = document.querySelector("#version")
             const version_id = v.value

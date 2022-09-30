@@ -45,7 +45,7 @@ export default {
     methods: {
         getAllVersions(){
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/version?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/version?token=" + token
 
             axios.get(url).then(res => {
 
@@ -62,7 +62,7 @@ export default {
         addVersion(){
 
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/version"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/version"
             const data = {
                 "name": this.add_version_name,
             }

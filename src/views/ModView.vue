@@ -117,7 +117,7 @@ export default {
     methods: {
         getAllCategories() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/category?token=" + token
 
             axios.get(url).then(res => {
 
@@ -133,7 +133,7 @@ export default {
 
         getAllVersions() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/version?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/version?token=" + token
 
             axios.get(url).then(res => {
 
@@ -151,7 +151,7 @@ export default {
 
             const name = this.mod_name
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/mod/name?token=" + token + "&mod=" + name
+            const url = "https://minecraftpoketedition.top:8443/api_v1/mod/name?token=" + token + "&mod=" + name
 
             axios.get(url).then(res => {
 
@@ -182,7 +182,7 @@ export default {
             const page = "&page=" + this.current_page
             const size = "&size=10"
 
-            const url = "http://minecraftpoketedition.top:8888/api_v1/mod/page/" + category + "?token=" + token + page + size
+            const url = "https://minecraftpoketedition.top:8443/api_v1/mod/page/" + category + "?token=" + token + page + size
 
             axios.get(url).then(res => {
 

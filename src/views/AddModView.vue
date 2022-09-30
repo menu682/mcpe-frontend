@@ -60,7 +60,7 @@ export default {
 
         getAllCategories() {
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/category?token=" + token
 
             axios.get(url).then(res => {
 
@@ -77,7 +77,7 @@ export default {
 
         saveMod(){
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/mod"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/mod"
             const data = {
                 "mod_name": this.mod_name,
                 "mod_description": this.mod_description,
@@ -107,7 +107,7 @@ export default {
 
             const name = this.mod_name
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/mod/name?token=" + token + "&mod=" + name
+            const url = "https://minecraftpoketedition.top:8443/api_v1/mod/name?token=" + token + "&mod=" + name
 
             axios.get(url).then(res => {
 

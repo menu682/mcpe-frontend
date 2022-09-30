@@ -40,7 +40,7 @@ export default {
                 "password": this.password
             }
 
-            const url = "http://minecraftpoketedition.top:8888/api_v1/auth/login"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/auth/login"
 
             axios.post(url, reqData).then((res) => {
 

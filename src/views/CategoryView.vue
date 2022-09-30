@@ -54,7 +54,7 @@ export default {
     methods: {
         getAllCategories(){
             const token = this.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category?token=" + token
+            const url = "https://minecraftpoketedition.top:8443/api_v1/category?token=" + token
 
             axios.get(url).then(res => {
 
@@ -72,7 +72,7 @@ export default {
         addCategory(){
 
             const token = localStorage.token
-            const url = "http://minecraftpoketedition.top:8888/api_v1/category"
+            const url = "https://minecraftpoketedition.top:8443/api_v1/category"
             const data = {
                 "name": this.add_category_name,
                 "parent": this.add_category_parent
