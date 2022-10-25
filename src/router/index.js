@@ -9,6 +9,7 @@ import CategoryEditView from "@/views/CategoryEditView";
 import VersionEditView from "@/views/VersionEditView";
 import ModEditView from "@/views/ModEditView";
 import AddModView from "@/views/AddModView";
+import PrivacyView from "@/views/PrivacyView";
 
 const routes = [
     {path: '/', name: 'home', component: HomeView},
@@ -21,6 +22,7 @@ const routes = [
     {path: '/mod', name: 'mod', component: ModView},
     {path: '/mod/:id', name: 'mod_edit', component: ModEditView},
     {path: '/addmod', name: 'mod_add', component: AddModView},
+    {path: '/privacy-policy', name: 'privacy', component: PrivacyView},
 
     // {
     //   path: '/about',
